@@ -1,20 +1,29 @@
-import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import HomeScreen from './src/screens/HomeScreen';
+import NewsScreen from './src/screens/NewsScreen';
 
-const App = () => {
-  return (
-    <View style={styles.body}>
-      <Text style={styles.text}>Hejsan</Text>
-    </View>
-  );
+const Stack = createNativeStackNavigator();
+
+const navigationStyles = {
+  headerStyle: {
+    backgroundColor: '#f4511e',
+  },
+  headerTintColor: '#fff',
+  headerTitleStyle: 'bold',
+  headerTitleAlign: 'center',
 };
 
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-  },
-});
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home" screenOptions={navigationStyles}>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="News" component={NewsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+}
 
 export default App;
