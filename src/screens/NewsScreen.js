@@ -1,6 +1,7 @@
 import React from 'react';
 // import getFetch from '../api/';
 import {View, Text, StyleSheet, Button} from 'react-native';
+import List from '../components/List';
 
 export const NewsScreen = ({navigation}) => {
   //   const [isLoading, setLoading] = useState(true);
@@ -12,7 +13,8 @@ export const NewsScreen = ({navigation}) => {
   //   }, []);
   return (
     <View style={styles.body}>
-      <Text>News Screen</Text>
+      <Text style={styles.header}>Nyheter från Soleil</Text>
+      <List />
       {/* {isLoading ? (
         <ActivityIndicator />
       ) : (
@@ -27,7 +29,7 @@ export const NewsScreen = ({navigation}) => {
         />
       )} */}
 
-      <Button title="Gå tillbaka" onPress={() => navigation.navigate('Home')} />
+      <Button title="Gå tillbaka" onPress={() => navigation.navigate('Hem')} />
     </View>
   );
 };
@@ -37,6 +39,10 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
+  },
+  header: {
+    fontWeight: 'bold',
+    fontSize: 30,
   },
 });
 

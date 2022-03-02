@@ -2,31 +2,37 @@
   {
     "id": "5.239400394940",
     "title": "Nyhet 1 från SiteVision",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "published": "2021-11-25"
   },
   {
     "id": "5.239400394900341",
     "title": "Nyhet 2 från SiteVision",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "published": "2021-10-14"
   },
   {
     "id": "5.23943201390900",
     "title": "Nyhet 3 från SiteVision",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "published": "2021-08-11"
   },
   {
     "id": "5.9340019403",
     "title": "Nyhet 4 från SiteVision",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "published": "2021-04-1"
   },
   {
     "id": "5.039490390134",
     "title": "Nyhet 5 från SiteVision",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "published": "2021-7-30"
   },
   {
     "id": "5.3942984932894",
     "title": "Nyhet 6 från SiteVision",
-    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "published": "2021-01-01"
   }
 ]

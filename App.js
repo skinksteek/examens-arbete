@@ -19,8 +19,8 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home" screenOptions={navigationStyles}>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="News" component={NewsScreen} />
+        <Stack.Screen name="Hem" component={HomeScreen} />
+        <Stack.Screen name="Nyheter" component={NewsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
