@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {fetchFunction} from '../api/index';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from '../screens/HomeScreen';
 import templates from '../utils/Constants';
 const Tab = createBottomTabNavigator();
@@ -20,12 +21,29 @@ export const Menu = () => {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen
+          name="Hem"
+          component={HomeScreen}
+          options={{
+            tabBarIcon: () => (
+              <FontAwesome5 name="home" color="black" size={20} />
+            ),
+          }}
+        />
         {pages.map((page, index) => (
           <Tab.Screen
             name={page.name}
             component={templates[page.properties.template]}
             key={index}
+            options={{
+              tabBarIcon: () => (
+                <FontAwesome5
+                  name={page.properties['sol.rn.icon']}
+                  color="black"
+                  size={20}
+                />
+              ),
+            }}
           />
         ))}
       </Tab.Navigator>
