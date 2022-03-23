@@ -7,7 +7,7 @@ export const List = () => {
   let [news, setNews] = useState([]);
   useEffect(() => {
     fetchFunction(
-      'https://linus.labb.soleilit.se/rest-api/1/1/19.451c9ebc17dd75869517a3ed/headless',
+      'https://linus.labb.soleilit.se/rest-api/1/1/3.484d9c7317ce4f0e1b69ed/headless',
       'get',
     )
       .then(response => response.json())
@@ -15,18 +15,16 @@ export const List = () => {
   }, []);
   const renderItem = ({item}) => (
     <Item
-      title={item.title}
-      description={item.description}
-      published={item.published}
+      title={item.nodes.name}
+      description={item.nodes.properties['sol.description.module']}
+      published={item.nodes.properties.publishDate}
     />
   );
   return (
     <View>
-      <FlatList
-        data={news}
-        renderItem={renderItem}
-        keyExtractor={article => article.id}
-      />
+      {news.map((article, index) => (
+        <FlatList data={article} renderItem={renderItem} key={index} />
+      ))}
     </View>
   );
 };

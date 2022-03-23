@@ -1,10 +1,12 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import List from '../components/List';
 
 export const NewsScreen = ({navigation}) => {
   return (
     <View style={styles.body}>
       <Text style={styles.header}>Nyheter från Soleil</Text>
+      <List />
     </View>
   );
 };
