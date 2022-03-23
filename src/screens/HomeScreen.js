@@ -7,10 +7,7 @@ export const HomeScreen = ({navigation}) => {
   return (
     <View style={styles.body}>
       <Text>Home Screen</Text>
-      <Button
-        title="Gå till nyheter"
-        onPress={() => navigation.navigate('Nyheter')}
-      />
+      <Button title="Nyheter" onPress={() => navigation.navigate('Nyheter')} />
       <Button
         title="Fetch"
         onPress={async () => {
