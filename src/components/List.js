@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, FlatList, StyleSheet, StatusBar} from 'react-native';
+import {View, FlatList, StyleSheet} from 'react-native';
 import Item from './Item';
 import fetchFunction from '../api';
 
