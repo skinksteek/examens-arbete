@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, FlatList, StyleSheet, StatusBar} from 'react-native';
+import {View, FlatList, StyleSheet, StatusBar} from 'react-native';
 import Item from './Item';
 import fetchFunction from '../api';
 
@@ -21,19 +21,18 @@ export const List = () => {
     />
   );
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <FlatList
         data={news}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: StatusBar.currentHeight || 0,
   },
 });
 
