@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, FlatList} from 'react-native';
+import {SafeAreaView, FlatList, StyleSheet, StatusBar} from 'react-native';
 import Item from './Item';
 import fetchFunction from '../api';
 
@@ -15,18 +15,26 @@ export const List = () => {
   }, []);
   const renderItem = ({item}) => (
     <Item
-      title={item.nodes.name}
-      description={item.nodes.properties['sol.description.module']}
-      published={item.nodes.properties.publishDate}
+      title={item.name}
+      description={item.properties['sol.description.module']}
+      published={item.properties.publishDate}
     />
   );
   return (
-    <View>
-      {news.map((article, index) => (
-        <FlatList data={article} renderItem={renderItem} key={index} />
-      ))}
-    </View>
+    <SafeAreaView style={styles.container}>
+      <FlatList
+        data={news}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+    </SafeAreaView>
   );
 };
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0,
+  },
+});
 
 export default List;
