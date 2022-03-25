@@ -3,16 +3,23 @@ import {View, FlatList, StyleSheet} from 'react-native';
 import Item from './Item';
 import fetchFunction from '../api';
 
-export const List = () => {
-  let [news, setNews] = useState([]);
+export const List = ({maxNewsToShow}) => {
+  let [shownNews, setNews] = useState([]);
+
   useEffect(() => {
     fetchFunction(
       'https://linus.labb.soleilit.se/rest-api/1/1/3.484d9c7317ce4f0e1b69ed/headless',
       'get',
     )
       .then(response => response.json())
-      .then(data => setNews(data.nodes));
-  }, []);
+      .then(data => {
+        if (maxNewsToShow) {
+          setNews(data.nodes.slice(0, maxNewsToShow));
+        } else {
+          setNews(data.nodes);
+        }
+      });
+  }, [maxNewsToShow]);
   const renderItem = ({item}) => (
     <Item
       title={item.name}
@@ -23,7 +30,7 @@ export const List = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={news}
+        data={shownNews}
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />

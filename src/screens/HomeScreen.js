@@ -1,14 +1,20 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, StyleSheet, Button} from 'react-native';
-import fetchFunction from '../api';
+import {Colors} from '../styles/Colors';
+// import fetchFunction from '../api';
+import List from '../components/List';
 
 export const HomeScreen = ({navigation}) => {
-  const [data, setData] = useState();
+  // const [data, setData] = useState();
   return (
     <View style={styles.body}>
-      <Text>Home Screen</Text>
-      <Button title="Nyheter" onPress={() => navigation.navigate('Nyheter')} />
+      <Text>Senaste nyheter</Text>
+      <List maxNewsToShow={3} />
       <Button
+        title="Fler nyheter"
+        onPress={() => navigation.navigate('Nyheter')}
+      />
+      {/* <Button
         title="Fetch"
         onPress={async () => {
           const response = await fetchFunction(
@@ -18,7 +24,7 @@ export const HomeScreen = ({navigation}) => {
           setData(response);
         }}
       />
-      <Text>{JSON.stringify(data)}</Text>
+      <Text>{JSON.stringify(data)}</Text> */}
     </View>
   );
 };
@@ -26,7 +32,7 @@ export const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
     alignItems: 'center',
   },
 });
