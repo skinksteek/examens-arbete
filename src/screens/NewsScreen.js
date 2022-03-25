@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import List from '../components/List';
+import Colors from '../styles/Colors';
 
 export const NewsScreen = ({navigation}) => {
   return (
@@ -14,7 +15,7 @@ export const NewsScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: Colors.background,
     alignItems: 'center',
   },
   header: {
