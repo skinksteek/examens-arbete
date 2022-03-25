@@ -18,7 +18,9 @@ function App() {
         <Stack.Screen
           name="Menu"
           component={Menu}
-          options={{headerShown: false}}
+          options={{
+            headerShown: false,
+          }}
         />
         <Stack.Screen name="Nyheter" component={NewsScreen} />
       </Stack.Navigator>

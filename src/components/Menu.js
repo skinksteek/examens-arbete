@@ -4,6 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from '../screens/HomeScreen';
 import templates from '../utils/Constants';
+import {Colors} from '../styles/Colors';
 const Tab = createBottomTabNavigator();
 
 export const Menu = () => {
@@ -18,13 +19,33 @@ export const Menu = () => {
   }, []);
 
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={{
+        tabBarActiveTintColor: '#e91e63',
+        tabBarStyle: {
+          borderTopLeftRadius: 21,
+          borderTopRightRadius: 21,
+          shadowOffset: {width: 10, height: 10},
+          shadowColor: 'black',
+          shadowRadius: 1,
+          backgroundColor: Colors.primary,
+          position: 'absolute',
+          bottom: 0,
+          padding: 10,
+          height: 54,
+        },
+      }}>
       <Tab.Screen
         name="Hem"
         component={HomeScreen}
         options={{
-          tabBarIcon: () => (
-            <FontAwesome5 name="home" color="black" size={20} />
+          headerStyle: {
+            borderBottomRightRadius: 21,
+            borderBottomLeftRadius: 21,
+            backgroundColor: Colors.primary,
+          },
+          tabBarIcon: ({color}) => (
+            <FontAwesome5 name="home" color={color} size={20} />
           ),
         }}
       />
@@ -34,10 +55,15 @@ export const Menu = () => {
           component={templates[page.properties.template]}
           key={index}
           options={{
-            tabBarIcon: () => (
+            headerStyle: {
+              borderBottomRightRadius: 21,
+              borderBottomLeftRadius: 21,
+              backgroundColor: Colors.primary,
+            },
+            tabBarIcon: ({color}) => (
               <FontAwesome5
                 name={page.properties['sol.rn.icon']}
-                color="black"
+                color={color}
                 size={20}
               />
             ),
