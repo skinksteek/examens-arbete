@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, Button} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {Colors} from '../styles/Colors';
 // import fetchFunction from '../api';
 import List from '../components/List';
+import {Button} from '../components/Button';
 
 export const HomeScreen = ({navigation}) => {
   // const [data, setData] = useState();
@@ -10,10 +11,7 @@ export const HomeScreen = ({navigation}) => {
     <View style={styles.body}>
       <Text>Senaste nyheter</Text>
       <List maxNewsToShow={3} />
-      <Button
-        title="Fler nyheter"
-        onPress={() => navigation.navigate('Nyheter')}
-      />
+      <Button />
       {/* <Button
         title="Fetch"
         onPress={async () => {
@@ -32,7 +30,7 @@ export const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.gray,
     alignItems: 'center',
   },
 });
