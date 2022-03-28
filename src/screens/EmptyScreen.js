@@ -13,7 +13,7 @@ export const EmptyScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
-    backgroundColor: Colors.background,
+    backgroundColor: Colors.gray,
     alignItems: 'center',
   },
 });

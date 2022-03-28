@@ -21,18 +21,24 @@ export const Menu = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: '#e91e63',
+        tabBarActiveTintColor: Colors.orange,
         tabBarStyle: {
+          shadowOffset: {
+            width: 0,
+            height: 12,
+          },
+          shadowOpacity: 0.58,
+          shadowRadius: 16.0,
+          elevation: 24,
           borderTopLeftRadius: 21,
           borderTopRightRadius: 21,
-          shadowOffset: {width: 10, height: 10},
-          shadowColor: 'black',
-          shadowRadius: 1,
-          backgroundColor: Colors.primary,
+          backgroundColor: Colors.white,
           position: 'absolute',
           bottom: 0,
           padding: 10,
-          height: 54,
+          width: '100%',
+          height: 60,
+          zIndex: 0,
         },
       }}>
       <Tab.Screen
@@ -40,9 +46,7 @@ export const Menu = () => {
         component={HomeScreen}
         options={{
           headerStyle: {
-            borderBottomRightRadius: 21,
-            borderBottomLeftRadius: 21,
-            backgroundColor: Colors.primary,
+            backgroundColor: Colors.orange,
           },
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="home" color={color} size={20} />
@@ -56,9 +60,7 @@ export const Menu = () => {
           key={index}
           options={{
             headerStyle: {
-              borderBottomRightRadius: 21,
-              borderBottomLeftRadius: 21,
-              backgroundColor: Colors.primary,
+              backgroundColor: Colors.orange,
             },
             tabBarIcon: ({color}) => (
               <FontAwesome5
