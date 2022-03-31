@@ -1,30 +1,32 @@
 import React from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Colors from '../styles/Colors';
 
-export const Button = ({navigation}) => {
+export const Button = ({text}) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        style={styles.button}
-        title="Fler nyheter"
-        onPress={() => navigation.navigate('Nyheter')}>
-        <Text>Press Here</Text>
-      </TouchableOpacity>
-    </View>
+    <TouchableOpacity onPress={() => navigation.navigate('Nyheter')}>
+      <View style={styles.button}>
+        <Text style={styles.buttonText}>{text}</Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 1,
-  },
   button: {
-    alignItems: 'center',
+    padding: 50,
+    borderRadius: 8,
+    paddingVertical: 14,
+    paddingHorizontal: 10,
+    elevation: 3,
     backgroundColor: Colors.orange,
-    padding: 10,
+  },
+  buttonText: {
+    fontSize: 16,
+    textAlign: 'center',
+    color: Colors.black,
   },
 });
 export default Button;
