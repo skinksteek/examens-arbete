@@ -8,6 +8,7 @@ LogBox.ignoreLogs([
   "[react-native-gesture-handler] Seems like you're using an old API with gesture components, check out new Gestures system!",
 ]);
 import NewsScreen from './src/screens/NewsScreen';
+import Colors from './src/styles/Colors';
 
 const Stack = createStackNavigator();
 
@@ -22,7 +23,15 @@ function App() {
             headerShown: false,
           }}
         />
-        <Stack.Screen name="Nyheter" component={NewsScreen} />
+        <Stack.Screen
+          name="Nyheter"
+          component={NewsScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.orange,
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
