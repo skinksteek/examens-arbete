@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {format} from 'date-fns';
+import Colors from '../styles/Colors';
 
 export const Item = ({title, description, published}) => {
   const publishDate = new Date(published);
@@ -26,7 +27,13 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 200,
     margin: 10,
-    borderBottomWidth: 0.2,
+    borderWidth: 2,
+    paddingVertical: 12,
+    paddingHorizontal: 32,
+    borderRadius: 4,
+    borderColor: Colors.orange,
+    elevation: 3,
+    backgroundColor: Colors.white,
   },
   title: {
     fontWeight: '500',
