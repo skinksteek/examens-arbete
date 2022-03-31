@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {globalStyles} from '../styles/global';
 import {Colors} from '../styles/Colors';
 // import fetchFunction from '../api';
 import List from '../components/List';
@@ -8,11 +9,12 @@ import {Button} from '../components/Button';
 export const HomeScreen = ({navigation}) => {
   // const [data, setData] = useState();
   return (
-    <View style={styles.body}>
-      <Text>Senaste nyheter</Text>
-      <List maxNewsToShow={3} />
-      <Button />
-      {/* <Button
+    <View style={globalStyles.container}>
+      <View style={styles.body}>
+        <Text>Senaste nyheter</Text>
+        <List maxNewsToShow={3} />
+        <Button text="Fler nyheter" />
+        {/* <Button
         title="Fetch"
         onPress={async () => {
           const response = await fetchFunction(
@@ -23,6 +25,7 @@ export const HomeScreen = ({navigation}) => {
         }}
       />
       <Text>{JSON.stringify(data)}</Text> */}
+      </View>
     </View>
   );
 };
@@ -30,6 +33,7 @@ export const HomeScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   body: {
     flex: 1,
+    marginBottom: 40,
     backgroundColor: Colors.gray,
     alignItems: 'center',
   },
