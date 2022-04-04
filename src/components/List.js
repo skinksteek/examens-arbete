@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import Item from './Item';
 import fetchFunction from '../api';
-import Button from './Button';
 
 export const List = ({maxNewsToShow, size, ListFooterComponent}) => {
   let [shownNews, setNews] = useState([]);
