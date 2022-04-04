@@ -1,5 +1,6 @@
 import React from 'react';
 import Menu from './src/components/Menu';
+import ClickableArticle from './src/screens/ClickableArticle';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {LogBox} from 'react-native';
@@ -26,6 +27,15 @@ function App() {
         <Stack.Screen
           name="Nyheter"
           component={NewsScreen}
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.orange,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Clickable"
+          component={ClickableArticle}
           options={{
             headerStyle: {
               backgroundColor: Colors.orange,
