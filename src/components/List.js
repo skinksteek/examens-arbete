@@ -2,8 +2,9 @@ import React, {useState, useEffect} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
 import Item from './Item';
 import fetchFunction from '../api';
+import Button from './Button';
 
-export const List = ({maxNewsToShow}) => {
+export const List = ({maxNewsToShow, size, ListFooterComponent}) => {
   let [shownNews, setNews] = useState([]);
 
   useEffect(() => {
@@ -25,6 +26,7 @@ export const List = ({maxNewsToShow}) => {
       title={item.name}
       description={item.properties['sol.description.module']}
       published={item.properties.publishDate}
+      size={size}
     />
   );
   return (
@@ -33,6 +35,7 @@ export const List = ({maxNewsToShow}) => {
         data={shownNews}
         renderItem={renderItem}
         keyExtractor={item => item.id}
+        ListFooterComponent={ListFooterComponent}
       />
     </View>
   );

@@ -3,12 +3,37 @@ import {View, Text, StyleSheet} from 'react-native';
 import {format} from 'date-fns';
 import Colors from '../styles/Colors';
 
-export const Item = ({title, description, published}) => {
+export const Item = ({title, description, published, size}) => {
+  const sizes = {
+    large: 300,
+    medium: 200,
+    small: 125,
+  };
+
+  const artSize = sizes[size] || sizes.medium;
+
+  const properties = {
+    borderColor: Colors.orange,
+    backgroundColor: Colors.white,
+    borderRadius: 4,
+  };
+
+  const articleStyles = {
+    height: artSize,
+    flex: 1,
+    margin: 10,
+    borderWidth: 2,
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    borderRadius: 4,
+    elevation: 3,
+  };
+
   const publishDate = new Date(published);
   const time = format(publishDate, 'MM/dd/yyyy');
 
   return (
-    <View style={styles.article}>
+    <View style={[articleStyles, properties]}>
       <Text numberOfLines={2} style={styles.title}>
         {title}
       </Text>
@@ -23,18 +48,6 @@ export const Item = ({title, description, published}) => {
 export default Item;
 
 const styles = StyleSheet.create({
-  article: {
-    flex: 1,
-    height: 200,
-    margin: 10,
-    borderWidth: 2,
-    paddingVertical: 12,
-    paddingHorizontal: 32,
-    borderRadius: 4,
-    borderColor: Colors.orange,
-    elevation: 3,
-    backgroundColor: Colors.white,
-  },
   title: {
     fontWeight: '500',
     fontSize: 25,
@@ -48,6 +61,8 @@ const styles = StyleSheet.create({
   publish: {
     fontSize: 13,
     fontWeight: '400',
-    padding: 5,
+    position: 'absolute',
+    bottom: 10,
+    left: 20,
   },
 });

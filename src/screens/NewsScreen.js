@@ -7,7 +7,7 @@ export const NewsScreen = ({navigation}) => {
   return (
     <View style={styles.body}>
       <Text style={styles.header}>Nyheter från Soleil</Text>
-      <List />
+      <List size="medium" />
     </View>
   );
 };
