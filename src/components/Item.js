@@ -1,9 +1,11 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {format} from 'date-fns';
 import Colors from '../styles/Colors';
 
 export const Item = ({title, description, published, size}) => {
+  const navigation = useNavigation();
   const sizes = {
     large: 300,
     medium: 200,
@@ -33,15 +35,17 @@ export const Item = ({title, description, published, size}) => {
   const time = format(publishDate, 'MM/dd/yyyy');
 
   return (
-    <View style={[articleStyles, properties]}>
-      <Text numberOfLines={2} style={styles.title}>
-        {title}
-      </Text>
-      <Text numberOfLines={3} style={styles.desc}>
-        {description}
-      </Text>
-      <Text style={styles.publish}>Publicerad: {time} </Text>
-    </View>
+    <TouchableOpacity onPress={() => navigation.navigate('Clickable')}>
+      <View style={[articleStyles, properties]}>
+        <Text numberOfLines={2} style={styles.title}>
+          {title}
+        </Text>
+        <Text numberOfLines={3} style={styles.desc}>
+          {description}
+        </Text>
+        <Text style={styles.publish}>Publicerad: {time} </Text>
+      </View>
+    </TouchableOpacity>
   );
 };
 
