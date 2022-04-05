@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {format} from 'date-fns';
 import Colors from '../styles/Colors';
 
-export const Item = ({title, description, published, size}) => {
+export const Item = ({title, description, published, size, id}) => {
   const navigation = useNavigation();
   const sizes = {
     large: 300,
@@ -35,7 +35,12 @@ export const Item = ({title, description, published, size}) => {
   const time = format(publishDate, 'MM/dd/yyyy');
 
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Clickable')}>
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('Clickable', {
+          id: id,
+        });
+      }}>
       <View style={[articleStyles, properties]}>
         <Text numberOfLines={2} style={styles.title}>
           {title}

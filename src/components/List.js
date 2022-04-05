@@ -26,6 +26,7 @@ export const List = ({maxNewsToShow, size, ListFooterComponent}) => {
       description={item.properties['sol.description.module']}
       published={item.properties.publishDate}
       size={size}
+      id={item.id}
     />
   );
   return (
