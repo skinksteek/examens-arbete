@@ -3,7 +3,7 @@ import {fetchFunction} from '../api/index';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import HomeScreen from '../screens/HomeScreen';
-import templates from '../utils/Constants';
+import {templates} from '../utils/Constants';
 import {Colors} from '../styles/Colors';
 const Tab = createBottomTabNavigator();
 
