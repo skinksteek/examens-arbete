@@ -1,17 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {globalStyles} from '../styles/global';
+import {Text, StyleSheet, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {format} from 'date-fns';
 import fetchFunction from '../api';
 import {components} from '../utils/Constants';
+import {Colors} from '../styles/Colors';
 
 export const ClickableArticle = ({route}) => {
   const navigation = useNavigation();
-  const publishDate = new Date();
-  const time = format(publishDate, 'MM/dd/yyyy');
   const [article, setArticle] = useState(null);
-
+  const [time, setTime] = useState(null);
   const {id} = route.params;
 
   useEffect(() => {
@@ -24,17 +22,19 @@ export const ClickableArticle = ({route}) => {
       .then(data => {
         if (!unmounted) {
           setArticle(data);
+          const articleDate = new Date(data.properties.publishDate);
+          const date = format(articleDate, 'MM/dd/yyyy');
+          setTime(date);
           navigation.setOptions({title: `${data.properties.articleName}`});
         }
       });
-
     return () => {
       unmounted = true;
     };
   });
-
+  // console.log(article.properties.publishDate);
   return (
-    <View style={globalStyles.container}>
+    <ScrollView style={styles.scrollView}>
       {article && (
         <>
           {article.contentNodes.map((node, index) => {
@@ -43,7 +43,21 @@ export const ClickableArticle = ({route}) => {
           })}
         </>
       )}
-    </View>
+      {time && <Text style={styles.publish}>Publicerad: {time}</Text>}
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  scrollView: {
+    backgroundColor: Colors.white,
+  },
+  publish: {
+    fontSize: 13,
+    paddingLeft: 15,
+    fontWeight: '400',
+    paddingBottom: 5,
+  },
+});
+
 export default ClickableArticle;

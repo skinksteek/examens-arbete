@@ -1,46 +1,47 @@
 import React, {useState} from 'react';
-import {StyleSheet, Image, View, ImageBackground} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {StyleSheet, Image, View, Text} from 'react-native';
 import Colors from '../styles/Colors';
 
 export const ImageModule = () => {
   const [error, setError] = useState(null);
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        {!error ? (
+    <View>
+      {!error ? (
+        <Image
+          source={{
+            uri: 'http://linus.labb.soleilit.se/images/18.484d9c7317ce4f0e1b6f33/1619692053482/exempel-28.jpg',
+          }}
+          onError={() => setError(true)}
+        />
+      ) : (
+        <View style={styles.bgContainer}>
           <Image
-            source={{
-              uri: 'http://linus.labb.soleilit.se/images/18.484d9c7317ce4f0e1b6f33/1619692053482/exempel-28.jpg',
-            }}
-            onError={() => setError(true)}
-          />
-        ) : (
-          <ImageBackground
-            style={styles.backgroundImage}
+            style={styles.image}
             source={{
               uri: 'https://images.unsplash.com/photo-1539667468225-eebb663053e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fG5hdHVyYWx8ZW58MHx8MHx8&w=1000&q=80',
             }}
           />
-        )}
-      </View>
-    </ScrollView>
+          <Text style={styles.author}>Foto: Arkivbild</Text>
+        </View>
+      )}
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 5,
+  bgContainer: {
     backgroundColor: Colors.orange,
-    alignItems: 'center',
   },
-  backgroundImage: {
-    flex: 1,
+  image: {
     width: '100%',
-    height: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
+    height: 500,
     opacity: 0.65,
+  },
+  author: {
+    backgroundColor: Colors.white,
+    fontSize: 12,
+    paddingLeft: 15,
+    paddingBottom: 5,
   },
 });
 

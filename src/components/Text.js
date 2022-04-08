@@ -18,9 +18,13 @@ export const TextModule = ({properties, name}) => {
 
 const styles = StyleSheet.create({
   text: {
+    color: Colors.black,
     flex: 1,
-    backgroundColor: Colors.gray,
     alignItems: 'center',
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingBottom: 15,
+    paddingTop: 5,
   },
 });
 
