@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, FlatList, StyleSheet} from 'react-native';
-import Item from './Item';
+import NewsItem from './NewsItem';
 import fetchFunction from '../api';
 
 export const List = ({maxNewsToShow, size, ListFooterComponent}) => {
@@ -21,7 +21,7 @@ export const List = ({maxNewsToShow, size, ListFooterComponent}) => {
       });
   }, [maxNewsToShow]);
   const renderItem = ({item}) => (
-    <Item
+    <NewsItem
       title={item.name}
       description={item.properties['sol.description.module']}
       published={item.properties.publishDate}

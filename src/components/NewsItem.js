@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {format} from 'date-fns';
 import Colors from '../styles/Colors';
 
-export const Item = ({title, description, published, size, id}) => {
+export const NewsItem = ({title, description, published, size, id}) => {
   const navigation = useNavigation();
   const sizes = {
     large: 300,
@@ -54,7 +54,7 @@ export const Item = ({title, description, published, size, id}) => {
   );
 };
 
-export default Item;
+export default NewsItem;
 
 const styles = StyleSheet.create({
   title: {
