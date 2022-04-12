@@ -55,8 +55,11 @@ export const Menu = () => {
       />
       {pages.map((page, index) => (
         <Tab.Screen
+          children={() => {
+            const TheComponent = templates[page.properties.template];
+            return <TheComponent id={page.properties['jcr:uuid']} />;
+          }}
           name={page.name}
-          component={templates[page.properties.template]}
           key={index}
           options={{
             headerStyle: {
