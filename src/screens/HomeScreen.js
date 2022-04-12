@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {globalStyles} from '../styles/global';
 import {Colors} from '../styles/Colors';
-import List from '../components/List';
+import NewsList from '../components/NewsList';
 import {Button} from '../components/Button';
 
 export const HomeScreen = ({navigation}) => {
@@ -11,7 +11,7 @@ export const HomeScreen = ({navigation}) => {
     <View style={globalStyles.container}>
       <View style={styles.body}>
         <Text>Senaste nyheter</Text>
-        <List
+        <NewsList
           maxNewsToShow={3}
           size="medium"
           navigation={navigation}

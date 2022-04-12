@@ -10,6 +10,7 @@ LogBox.ignoreLogs([
 ]);
 import NewsScreen from './src/screens/NewsScreen';
 import Colors from './src/styles/Colors';
+import SubPageScreen from './src/screens/SubPageScreen';
 
 const Stack = createStackNavigator();
 
@@ -36,6 +37,15 @@ function App() {
         <Stack.Screen
           name="Clickable"
           component={ClickableArticle}
+          options={{
+            headerStyle: {
+              backgroundColor: Colors.orange,
+            },
+          }}
+        />
+        <Stack.Screen
+          name="Subpage"
+          component={SubPageScreen}
           options={{
             headerStyle: {
               backgroundColor: Colors.orange,

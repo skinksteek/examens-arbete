@@ -3,7 +3,7 @@ import {View, FlatList, StyleSheet} from 'react-native';
 import NewsItem from './NewsItem';
 import fetchFunction from '../api';
 
-export const List = ({maxNewsToShow, size, ListFooterComponent}) => {
+export const NewsList = ({maxNewsToShow, size, ListFooterComponent}) => {
   let [shownNews, setNews] = useState([]);
 
   useEffect(() => {
@@ -46,4 +46,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default List;
+export default NewsList;

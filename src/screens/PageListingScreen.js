@@ -16,12 +16,12 @@ export const PageListingScreen = ({id}) => {
         setPage(data.nodes);
       });
   });
-
   const renderItem = ({item}) => (
     <PageItem
       title={item.name}
       description={item.properties['sol.description.module']}
       icon={item.properties['sol.rn.icon']}
+      id={item.properties['jcr:uuid']}
     />
   );
 

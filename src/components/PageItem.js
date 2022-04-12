@@ -1,22 +1,32 @@
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import Colors from '../styles/Colors';
 
-export const PageItem = ({title, description, icon}) => {
+export const PageItem = ({title, description, icon, id}) => {
+  const navigation = useNavigation();
   return (
-    <View style={styles.container}>
-      <View style={styles.heading}>
-        <Text style={styles.title}>{title}</Text>
-        <FontAwesome5
-          name={icon}
-          style={styles.icon}
-          size={20}
-          color={Colors.orange}
-        />
+    <TouchableOpacity
+      onPress={() => {
+        console.log(id);
+        navigation.navigate('Subpage', {
+          id: id,
+        });
+      }}>
+      <View style={styles.container}>
+        <View style={styles.heading}>
+          <Text style={styles.title}>{title}</Text>
+          <FontAwesome5
+            name={icon}
+            style={styles.icon}
+            size={20}
+            color={Colors.orange}
+          />
+        </View>
+        <Text style={styles.desc}>{description}</Text>
       </View>
-      <Text style={styles.desc}>{description}</Text>
-    </View>
+    </TouchableOpacity>
   );
 };
 

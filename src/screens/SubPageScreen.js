@@ -1,16 +1,37 @@
-import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, Text, StyleSheet} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
+import fetchFunction from '../api';
 import Colors from '../styles/Colors';
-// import data from '../api/data.json';
 
-// const subdata = data.contentNodes;
+export const SubPageScreen = ({route}) => {
+  const navigation = useNavigation();
+  const [subpage, setSubpage] = useState(null);
+  const {id} = route.params;
 
-export const SubPageScreen = ({navigation}) => {
+  useEffect(() => {
+    let unmounted = false;
+    fetchFunction(
+      `https://linus.labb.soleilit.se/rest-api/1/1/${id}/headless`,
+      'get',
+    )
+      .then(response => response.json())
+      .then(data => {
+        if (!unmounted) {
+          setSubpage(data);
+          navigation.setOptions({title: `${data.properties.displayName}`});
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    return () => {
+      unmounted = true;
+    };
+  });
   return (
     <View style={styles.body}>
-      {/* {subdata.map((content, index) => (
-        <Text key={index}>{content.properties.textContent}</Text>
-      ))} */}
+      <Text>SubPage</Text>
     </View>
   );
 };

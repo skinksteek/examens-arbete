@@ -32,7 +32,7 @@ export const ClickableArticle = ({route}) => {
       unmounted = true;
     };
   });
-  // console.log(article.properties.publishDate);
+
   return (
     <ScrollView style={styles.scrollView}>
       {article && (
