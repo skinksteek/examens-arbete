@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {ScrollView, StyleSheet} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
+import {components} from '../utils/Constants';
 import Colors from '../styles/Colors';
 
-export const SubPageScreen = ({route}) => {
+export const SubPageScreen = ({route, id}) => {
   const navigation = useNavigation();
   const [subpage, setSubpage] = useState(null);
-  const {id} = route.params;
 
   useEffect(() => {
     let unmounted = false;
+    const subPageId = route ? route.params.id : id;
     fetchFunction(
-      `https://linus.labb.soleilit.se/rest-api/1/1/${id}/headless`,
+      `https://linus.labb.soleilit.se/rest-api/1/1/${subPageId}/headless`,
       'get',
     )
       .then(response => response.json())
@@ -30,17 +31,22 @@ export const SubPageScreen = ({route}) => {
     };
   });
   return (
-    <View style={styles.body}>
-      <Text>SubPage</Text>
-    </View>
+    <ScrollView style={styles.body}>
+      {subpage && (
+        <>
+          {subpage.contentNodes.map((node, index) => {
+            const TheComponent = components[node.type];
+            return <TheComponent {...node} key={index} />;
+          })}
+        </>
+      )}
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
-    flex: 1,
     backgroundColor: Colors.gray,
-    alignItems: 'center',
   },
 });
 
