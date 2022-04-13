@@ -5,7 +5,7 @@ import Colors from '../styles/Colors';
 export const WidePageScreen = ({navigation}) => {
   return (
     <View style={styles.body}>
-      <Text>Sub Page Screen</Text>
+      <Text>Wide Page Screen</Text>
     </View>
   );
 };

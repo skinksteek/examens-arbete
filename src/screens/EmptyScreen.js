@@ -5,7 +5,7 @@ import Colors from '../styles/Colors';
 export const EmptyScreen = ({navigation}) => {
   return (
     <View style={styles.body}>
-      <Text>Sub Page Screen</Text>
+      <Text>Empty Screen</Text>
     </View>
   );
 };
