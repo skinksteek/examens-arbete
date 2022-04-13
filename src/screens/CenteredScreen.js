@@ -1,21 +1,47 @@
-import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Colors from '../styles/Colors';
+import React, {useState, useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import fetchFunction from '../api';
+import {components} from '../utils/Constants';
+import {ScrollView} from 'react-native';
+import {globalStyles} from '../styles/global';
 
-export const CenteredScreen = ({navigation}) => {
+export const CenteredScreen = ({route, id}) => {
+  const navigation = useNavigation();
+  const [centered, setCentered] = useState(null);
+
+  useEffect(() => {
+    let unmounted = false;
+    const centeredId = route ? route.params.id : id;
+    fetchFunction(
+      `https://linus.labb.soleilit.se/rest-api/1/1/${centeredId}/headless`,
+      'get',
+    )
+      .then(response => response.json())
+      .then(data => {
+        if (!unmounted) {
+          setCentered(data);
+          navigation.setOptions({title: `${data.properties.displayName}`});
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    return () => {
+      unmounted = true;
+    };
+  });
   return (
-    <View style={styles.body}>
-      <Text>CenteredScreen</Text>
-    </View>
+    <ScrollView style={globalStyles.fullview}>
+      {centered && (
+        <>
+          {centered.contentNodes.map((node, index) => {
+            const TheComponent = components[node.type];
+            return <TheComponent {...node} key={index} />;
+          })}
+        </>
+      )}
+    </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: Colors.gray,
-    alignItems: 'center',
-  },
-});
 
 export default CenteredScreen;
