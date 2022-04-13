@@ -7,4 +7,8 @@ export const globalStyles = StyleSheet.create({
     padding: 20,
     backgroundColor: Colors.gray,
   },
+  fullview: {
+    marginBottom: 60,
+    backgroundColor: Colors.gray,
+  },
 });
