@@ -9,7 +9,6 @@ export const PageItem = ({title, description, icon, id}) => {
   return (
     <TouchableOpacity
       onPress={() => {
-        console.log(id);
         navigation.navigate('Subpage', {
           id: id,
         });
