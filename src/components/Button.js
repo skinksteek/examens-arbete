@@ -12,7 +12,7 @@ export const Button = ({
   size = 'large',
 }) => {
   const large = width / 1.3;
-  const small = width / 2;
+  const small = width / 2.5;
   const btnSize = size === 'large' ? large : small;
   const btnBgColor = type === 'filled' ? Colors.orange : Colors.white;
   const btnTextColor = type === 'filled' ? Colors.black : Colors.orange;
@@ -30,7 +30,6 @@ export const Button = ({
   const textStyles = {
     color: btnTextColor,
     fontSize: 16,
-    textTransform: 'uppercase',
     textAlign: 'center',
   };
 
