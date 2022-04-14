@@ -2,7 +2,13 @@ import React, {useState} from 'react';
 import {StyleSheet, Image, View, Text} from 'react-native';
 import Colors from '../styles/Colors';
 
-export const ImageModule = () => {
+export const ImageModule = ({
+  image,
+  height = 50,
+  width = 50,
+  scale,
+  showAuthor,
+}) => {
   const [error, setError] = useState(null);
   return (
     <View>
@@ -14,14 +20,16 @@ export const ImageModule = () => {
           onError={() => setError(true)}
         />
       ) : (
-        <View style={styles.bgContainer}>
+        <View>
           <Image
-            style={styles.image}
+            style={{height: height, width: width, resizeMode: scale}}
             source={{
-              uri: 'https://images.unsplash.com/photo-1539667468225-eebb663053e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTZ8fG5hdHVyYWx8ZW58MHx8MHx8&w=1000&q=80',
+              uri:
+                image ||
+                'https://marvel-b1-cdn.bc0a.com/f00000000104050/www.monsterenergy.com/media/uploads_image/2016/06/02/auto/800/c581cc58e0e310144b2aa6c0ec08e796.png?mod=v1_93512d3fc561643f9a0039a8f1934bf2',
             }}
           />
-          <Text style={styles.author}>Foto: Arkivbild</Text>
+          {showAuthor && <Text style={styles.author}>Foto: Arkivbild</Text>}
         </View>
       )}
     </View>
@@ -29,14 +37,6 @@ export const ImageModule = () => {
 };
 
 const styles = StyleSheet.create({
-  bgContainer: {
-    backgroundColor: Colors.orange,
-  },
-  image: {
-    width: '100%',
-    height: 500,
-    opacity: 0.65,
-  },
   author: {
     backgroundColor: Colors.white,
     fontSize: 12,
