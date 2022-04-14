@@ -39,6 +39,17 @@ export const ClickableArticle = ({route}) => {
         <>
           {article.contentNodes.map((node, index) => {
             const TheComponent = components[node.type];
+            if (node.type === 'image') {
+              return (
+                <components.image
+                  {...node}
+                  height={500}
+                  width="100%"
+                  scale="contain"
+                  showAuthor={true}
+                />
+              );
+            }
             return <TheComponent {...node} key={index} />;
           })}
         </>

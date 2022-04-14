@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Text, View, StyleSheet, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
 import Colors from '../styles/Colors';
 import Blurb from '../components/Blurb';
+import {ScrollView} from 'react-native';
 
 export const EmptyScreen = ({route, id}) => {
   const navigation = useNavigation();
@@ -25,11 +25,13 @@ export const EmptyScreen = ({route, id}) => {
           const blurbTitle = data.properties['sol.rn.blurb.title'];
           const blurbDescription = data.properties['sol.rn.blurb.description'];
           const blurbUrl = data.properties['sol.rn.blurb.url'];
-          if (blurbTitle && blurbDescription && blurbUrl) {
+          const blurbImg = data.properties['sol.rn.blurb.img'];
+          if (blurbTitle && blurbDescription && blurbUrl && blurbImg) {
             setBlurb({
               title: blurbTitle,
               description: blurbDescription,
               url: blurbUrl,
+              img: blurbImg,
             });
           }
           navigation.setOptions({title: `${data.properties.displayName}`});
@@ -43,21 +45,17 @@ export const EmptyScreen = ({route, id}) => {
     };
   });
   return (
-    <ScrollView style={styles.body}>
+    <ScrollView style={{backgroundColor: Colors.gray}}>
       {blurb && (
         <Blurb
           title={blurb.title}
           description={blurb.description}
           url={blurb.url}
+          img={blurb.img}
         />
       )}
     </ScrollView>
   );
 };
 
-const styles = StyleSheet.create({
-  body: {
-    backgroundColor: Colors.gray,
-  },
-});
 export default EmptyScreen;
