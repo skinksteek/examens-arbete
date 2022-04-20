@@ -1,14 +1,13 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
-import {globalStyles} from '../styles/global';
+import {globalStyling} from '../styles/global';
 import {Colors} from '../styles/Colors';
 import NewsList from '../components/NewsList';
 import {Button} from '../components/Button';
 
 export const HomeScreen = ({navigation}) => {
-  // const [data, setData] = useState();
   return (
-    <View style={globalStyles.container}>
+    <View style={globalStyling.default}>
       <View style={styles.body}>
         <Text>Senaste nyheter</Text>
         <NewsList
@@ -35,7 +34,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.gray,
     alignItems: 'center',
-    marginBottom: 60,
   },
 });
 
