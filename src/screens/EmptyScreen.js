@@ -3,12 +3,14 @@ import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
 import Colors from '../styles/Colors';
 import Blurb from '../components/Blurb';
-import {ScrollView} from 'react-native';
+import {ScrollView, Text} from 'react-native';
+import FAQ from '../components/FAQ';
 
 export const EmptyScreen = ({route, id}) => {
   const navigation = useNavigation();
   const [empty, setEmptypage] = useState(null);
   const [blurb, setBlurb] = useState(null);
+  const [showFAQ, setShowFAQ] = useState(null);
 
   useEffect(() => {
     let unmounted = false;
@@ -22,6 +24,8 @@ export const EmptyScreen = ({route, id}) => {
         if (!unmounted) {
           setEmptypage(data);
 
+          setShowFAQ(data.properties['sol.rn.faq'] === 'Ja');
+
           const blurbTitle = data.properties['sol.rn.blurb.title'];
           const blurbDescription = data.properties['sol.rn.blurb.description'];
           const blurbUrl = data.properties['sol.rn.blurb.url'];
@@ -34,6 +38,7 @@ export const EmptyScreen = ({route, id}) => {
               img: blurbImg,
             });
           }
+
           navigation.setOptions({title: `${data.properties.displayName}`});
         }
       })
@@ -54,6 +59,7 @@ export const EmptyScreen = ({route, id}) => {
           img={blurb.img}
         />
       )}
+      {showFAQ && <FAQ />}
     </ScrollView>
   );
 };
