@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
 import {components} from '../utils/Constants';
 import {ScrollView} from 'react-native';
-import {globalStyles} from '../styles/global';
+import {globalStyling} from '../styles/global';
 
 export const CenteredScreen = ({route, id}) => {
   const navigation = useNavigation();
@@ -31,7 +31,7 @@ export const CenteredScreen = ({route, id}) => {
     };
   });
   return (
-    <ScrollView style={globalStyles.fullview}>
+    <ScrollView style={globalStyling.default_scroll}>
       {centered && (
         <>
           {centered.contentNodes.map((node, index) => {
@@ -44,10 +44,11 @@ export const CenteredScreen = ({route, id}) => {
                   width="100%"
                   scale="contain"
                   showAuthor={true}
+                  key={index}
                 />
               );
             }
-            return <TheComponent {...node} key={index} />;
+            return <TheComponent {...node} />;
           })}
         </>
       )}

@@ -38,7 +38,7 @@ export const ImageModule = ({
 
 const styles = StyleSheet.create({
   author: {
-    backgroundColor: Colors.white,
+    backgroundColor: Colors.gray,
     fontSize: 12,
     paddingLeft: 15,
     paddingBottom: 5,
