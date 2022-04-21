@@ -1,15 +1,14 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import {globalStyling} from '../styles/global';
-import {Colors} from '../styles/Colors';
+import {View, Text} from 'react-native';
+import {globalStyling, textStyling} from '../styles/global';
 import NewsList from '../components/NewsList';
 import {Button} from '../components/Button';
 
 export const HomeScreen = ({navigation}) => {
   return (
-    <View style={globalStyling.default}>
-      <View style={styles.body}>
-        <Text>Senaste nyheter</Text>
+    <View style={globalStyling.default_view}>
+      <View style={globalStyling.flex}>
+        <Text style={textStyling.headerM}>Senaste nyheter</Text>
         <NewsList
           maxNewsToShow={3}
           size="medium"
@@ -28,13 +27,5 @@ export const HomeScreen = ({navigation}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: Colors.gray,
-    alignItems: 'center',
-  },
-});
 
 export default HomeScreen;

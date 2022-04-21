@@ -1,20 +1,26 @@
 import React, {useState, useEffect} from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList} from 'react-native';
 import PageItem from '../components/PageItem';
 import fetchFunction from '../api';
-import Colors from '../styles/Colors';
+import {globalStyling} from '../styles/global';
 
 export const PageListingScreen = ({id}) => {
   const [page, setPage] = useState(null);
   useEffect(() => {
+    let unmounted = false;
     fetchFunction(
       `https://linus.labb.soleilit.se/rest-api/1/1/${id}/headless`,
       'get',
     )
       .then(response => response.json())
       .then(data => {
-        setPage(data.nodes);
+        if (!unmounted) {
+          setPage(data.nodes);
+        }
       });
+    return () => {
+      unmounted = true;
+    };
   });
   const renderItem = ({item}) => (
     <PageItem
@@ -26,7 +32,7 @@ export const PageListingScreen = ({id}) => {
   );
 
   return (
-    <View style={styles.body}>
+    <View style={globalStyling.centered}>
       <FlatList
         data={page}
         keyExtractor={item => item.id}
@@ -35,13 +41,4 @@ export const PageListingScreen = ({id}) => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: Colors.gray,
-    alignItems: 'center',
-    paddingTop: 10,
-  },
-});
 export default PageListingScreen;

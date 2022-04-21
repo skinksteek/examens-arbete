@@ -1,20 +1,13 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
-import Colors from '../styles/Colors';
+import {View, Text} from 'react-native';
+import {globalStyling} from '../styles/global';
 
-export const WidePageScreen = ({navigation}) => {
+export const WidePageScreen = () => {
   return (
-    <View style={styles.body}>
+    <View style={globalStyling.default_view}>
       <Text>Wide Page Screen</Text>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: Colors.gray,
-    alignItems: 'center',
-  },
-});
 export default WidePageScreen;

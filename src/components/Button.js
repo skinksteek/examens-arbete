@@ -15,7 +15,7 @@ export const Button = ({
   const small = width / 2.5;
   const btnSize = size === 'large' ? large : small;
   const btnBgColor = type === 'filled' ? Colors.orange : Colors.white;
-  const btnTextColor = type === 'filled' ? Colors.black : Colors.orange;
+  const btnTextColor = type === 'filled' ? Colors.fontColor : Colors.orange;
   const btnBorderRadius = bordered ? 30 : 5;
 
   const containerStyles = {

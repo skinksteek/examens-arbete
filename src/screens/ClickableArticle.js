@@ -1,10 +1,11 @@
 import React, {useEffect, useState} from 'react';
-import {Text, StyleSheet, ScrollView} from 'react-native';
+import {Text, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {format} from 'date-fns';
 import fetchFunction from '../api';
 import {components} from '../utils/Constants';
 import {Colors} from '../styles/Colors';
+import {textStyling} from '../styles/global';
 
 export const ClickableArticle = ({route}) => {
   const navigation = useNavigation();
@@ -34,7 +35,7 @@ export const ClickableArticle = ({route}) => {
   });
 
   return (
-    <ScrollView style={styles.scrollView}>
+    <ScrollView style={{backgroundColor: Colors.white}}>
       {article && (
         <>
           {article.contentNodes.map((node, index) => {
@@ -54,21 +55,9 @@ export const ClickableArticle = ({route}) => {
           })}
         </>
       )}
-      {time && <Text style={styles.publish}>Publicerad: {time}</Text>}
+      {time && <Text style={textStyling.publish}>Publicerad: {time}</Text>}
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.white,
-  },
-  publish: {
-    fontSize: 13,
-    paddingLeft: 15,
-    fontWeight: '400',
-    paddingBottom: 5,
-  },
-});
 
 export default ClickableArticle;

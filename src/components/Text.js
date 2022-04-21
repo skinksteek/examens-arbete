@@ -1,6 +1,6 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
-import Colors from '../styles/Colors';
+import {Text} from 'react-native';
+import {textStyling} from '../styles/global';
 
 export const TextModule = ({properties, name}) => {
   const textSizes = {
@@ -13,19 +13,9 @@ export const TextModule = ({properties, name}) => {
     fontSize: textSizes[name.toLowerCase()],
   };
 
-  return <Text style={[font, styles.text]}>{properties.textContent}</Text>;
+  return (
+    <Text style={[font, textStyling.simpletext]}>{properties.textContent}</Text>
+  );
 };
-
-const styles = StyleSheet.create({
-  text: {
-    color: Colors.black,
-    flex: 1,
-    alignItems: 'center',
-    paddingLeft: 15,
-    paddingRight: 15,
-    paddingBottom: 15,
-    paddingTop: 5,
-  },
-});
 
 export default TextModule;

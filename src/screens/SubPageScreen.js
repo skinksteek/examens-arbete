@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView, StyleSheet} from 'react-native';
+import {ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
 import {components} from '../utils/Constants';
-import Colors from '../styles/Colors';
+import {globalStyling} from '../styles/global';
 
 export const SubPageScreen = ({route, id}) => {
   const navigation = useNavigation();
@@ -31,7 +31,7 @@ export const SubPageScreen = ({route, id}) => {
     };
   });
   return (
-    <ScrollView style={styles.body}>
+    <ScrollView style={globalStyling.scroll}>
       {subpage && (
         <>
           {subpage.contentNodes.map((node, index) => {
@@ -54,11 +54,5 @@ export const SubPageScreen = ({route, id}) => {
     </ScrollView>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    backgroundColor: Colors.gray,
-  },
-});
 
 export default SubPageScreen;

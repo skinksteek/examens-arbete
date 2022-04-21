@@ -4,7 +4,6 @@ import ClickableArticle from './ClickableArticle';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import NewsScreen from './NewsScreen';
-import Colors from '../styles/Colors';
 import SubPageScreen from './SubPageScreen';
 
 const Stack = createStackNavigator();
@@ -19,33 +18,9 @@ export const Screenstack = () => {
             headerShown: false,
           }}
         />
-        <Stack.Screen
-          name="Nyheter"
-          component={NewsScreen}
-          options={{
-            headerStyle: {
-              backgroundColor: Colors.orange,
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Clickable"
-          component={ClickableArticle}
-          options={{
-            headerStyle: {
-              backgroundColor: Colors.orange,
-            },
-          }}
-        />
-        <Stack.Screen
-          name="Subpage"
-          component={SubPageScreen}
-          options={{
-            headerStyle: {
-              backgroundColor: Colors.orange,
-            },
-          }}
-        />
+        <Stack.Screen name="Nyheter" component={NewsScreen} />
+        <Stack.Screen name="Clickable" component={ClickableArticle} />
+        <Stack.Screen name="Subpage" component={SubPageScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

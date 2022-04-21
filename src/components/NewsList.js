@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
-import {View, FlatList, StyleSheet} from 'react-native';
+import {View, FlatList} from 'react-native';
 import NewsItem from './NewsItem';
 import fetchFunction from '../api';
+import {globalStyling} from '../styles/global';
 
 export const NewsList = ({maxNewsToShow, size, ListFooterComponent}) => {
   let [shownNews, setNews] = useState([]);
@@ -27,10 +28,11 @@ export const NewsList = ({maxNewsToShow, size, ListFooterComponent}) => {
       published={item.properties.publishDate}
       size={size}
       id={item.id}
+      key={item.id}
     />
   );
   return (
-    <View style={styles.container}>
+    <View style={globalStyling.flex}>
       <FlatList
         data={shownNews}
         renderItem={renderItem}
@@ -40,10 +42,5 @@ export const NewsList = ({maxNewsToShow, size, ListFooterComponent}) => {
     </View>
   );
 };
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
 
 export default NewsList;

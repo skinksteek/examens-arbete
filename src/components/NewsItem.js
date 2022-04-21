@@ -1,8 +1,9 @@
 import React from 'react';
-import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {format} from 'date-fns';
 import Colors from '../styles/Colors';
+import {textStyling} from '../styles/global';
 
 export const NewsItem = ({title, description, published, size, id}) => {
   const navigation = useNavigation();
@@ -42,36 +43,16 @@ export const NewsItem = ({title, description, published, size, id}) => {
         });
       }}>
       <View style={[articleStyles, properties]}>
-        <Text numberOfLines={2} style={styles.title}>
+        <Text numberOfLines={2} style={textStyling.title}>
           {title}
         </Text>
-        <Text numberOfLines={3} style={styles.desc}>
+        <Text numberOfLines={3} style={textStyling.desc}>
           {description}
         </Text>
-        <Text style={styles.publish}>Publicerad: {time} </Text>
+        <Text style={textStyling.publish}>Publicerad: {time} </Text>
       </View>
     </TouchableOpacity>
   );
 };
 
 export default NewsItem;
-
-const styles = StyleSheet.create({
-  title: {
-    fontWeight: '500',
-    fontSize: 25,
-    padding: 10,
-  },
-  desc: {
-    fontSize: 16,
-    fontWeight: '500',
-    padding: 10,
-  },
-  publish: {
-    fontSize: 13,
-    fontWeight: '400',
-    position: 'absolute',
-    bottom: 10,
-    left: 20,
-  },
-});

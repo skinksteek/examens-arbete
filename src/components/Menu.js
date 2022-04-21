@@ -21,6 +21,9 @@ export const Menu = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        headerStyle: {
+          backgroundColor: Colors.orange,
+        },
         tabBarActiveTintColor: Colors.orange,
         tabBarStyle: {
           shadowOffset: {
@@ -45,9 +48,6 @@ export const Menu = () => {
         name="Hem"
         component={HomeScreen}
         options={{
-          headerStyle: {
-            backgroundColor: Colors.orange,
-          },
           tabBarIcon: ({color}) => (
             <FontAwesome5 name="home" color={color} size={20} />
           ),
@@ -57,14 +57,13 @@ export const Menu = () => {
         <Tab.Screen
           children={() => {
             const TheComponent = templates[page.properties.template];
-            return <TheComponent id={page.properties['jcr:uuid']} />;
+            return (
+              <TheComponent id={page.properties['jcr:uuid']} key={index} />
+            );
           }}
           name={page.name}
           key={index}
           options={{
-            headerStyle: {
-              backgroundColor: Colors.orange,
-            },
             tabBarIcon: ({color}) => (
               <FontAwesome5
                 name={page.properties['sol.rn.icon']}

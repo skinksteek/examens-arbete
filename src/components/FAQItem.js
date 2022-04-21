@@ -34,7 +34,7 @@ export const FAQItem = ({question, id}) => {
       title={question}
       left={props => <List.Icon {...props} icon="message-question" />}
       expanded={expanded}
-      theme={{colors: {primary: Colors.black}}}
+      theme={{colors: {primary: Colors.fontColor}}}
       onPress={handlePress}>
       {getAnswer?.contentNodes && (
         <>

@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
 import Colors from '../styles/Colors';
 import Blurb from '../components/Blurb';
-import {ScrollView, Text} from 'react-native';
+import {ScrollView} from 'react-native';
 import FAQ from '../components/FAQ';
 
 export const EmptyScreen = ({route, id}) => {

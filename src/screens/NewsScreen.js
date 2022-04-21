@@ -1,28 +1,15 @@
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
 import NewsList from '../components/NewsList';
-import Colors from '../styles/Colors';
+import {globalStyling, textStyling} from '../styles/global';
 
-export const NewsScreen = ({navigation}) => {
+export const NewsScreen = () => {
   return (
-    <View style={styles.body}>
-      <Text style={styles.header}>Nyheter från Soleil</Text>
+    <View style={globalStyling.flex}>
+      <Text style={textStyling.headerL}>Nyheter från Soleil</Text>
       <NewsList size="medium" />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: Colors.gray,
-    alignItems: 'center',
-  },
-  header: {
-    fontWeight: 'bold',
-    fontSize: 30,
-    margin: 10,
-  },
-});
 
 export default NewsScreen;
