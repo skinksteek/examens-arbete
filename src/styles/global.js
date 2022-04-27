@@ -6,16 +6,13 @@ export const globalStyling = StyleSheet.create({
     flex: 1,
     padding: 20,
     backgroundColor: Colors.gray,
-    marginBottom: 60,
   },
   default_scroll: {
     backgroundColor: Colors.gray,
-    marginBottom: 60,
   },
   centered: {
     flex: 1,
     padding: 20,
-    marginBottom: 60,
   },
   flex: {
     flex: 1,
