@@ -1,63 +1,57 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions, Linking} from 'react-native';
+import {StyleSheet, Dimensions, Linking} from 'react-native';
+import {Card, Title, Paragraph} from 'react-native-paper';
 import Colors from '../styles/Colors';
 import Button from './Button';
 import ImageModule from './Image';
 
 const {width, height} = Dimensions.get('window');
+
 export const Blurb = ({title, description, url, img}) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.box}>
-        <ImageModule
-          image={img}
-          height={height / 5}
-          width="100%"
-          style={styles.image}
-          scale="contain"
-        />
-        <Text style={styles.title}>{title}</Text>
-        <Text style={styles.description}>{description}</Text>
-        <View style={styles.buttonsContainer}>
-          <Button
-            text="Läs mer"
-            onPress={() => {
-              Linking.openURL(`${url}`);
-            }}
-            bordered
-            size="small"
-            type="filled"
-          />
-        </View>
-      </View>
-    </View>
+    <Card style={styles.container}>
+      <ImageModule
+        image={img}
+        height={height / 5}
+        width="100%"
+        style={styles.image}
+        scale="contain"
+      />
+      <Card.Content>
+        <Title style={styles.title}>{title}</Title>
+        <Paragraph style={styles.description}>{description}</Paragraph>
+      </Card.Content>
+      <Button
+        text="Läs mer"
+        onPress={() => {
+          Linking.openURL(`${url}`);
+        }}
+        bordered
+        size="small"
+        type="filled"
+      />
+    </Card>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
-    width: width,
-    height: height / 1.3,
+    margin: 20,
+    alignSelf: 'center',
+    width: width / 1.5,
     backgroundColor: Colors.gray,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 250,
-    height: 350,
-    backgroundColor: Colors.white,
-    borderColor: Colors.orange,
     borderWidth: 1.5,
     borderRadius: 10,
+    borderColor: Colors.orange,
     padding: 10,
-    shadowColor: Colors.black,
-    shadowOpacity: 0.5,
-    shadowRadius: 3,
-    shadowOffset: {
-      height: 0,
-      width: 0,
-    },
-    elevation: 2,
   },
+
+  img: {
+    resizeMode: 'center',
+    height: 100,
+    width: 200,
+  },
+
   title: {
     marginTop: 20,
     fontSize: 20,

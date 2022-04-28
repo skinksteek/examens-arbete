@@ -3,7 +3,7 @@ import {useNavigation} from '@react-navigation/native';
 import fetchFunction from '../api';
 import Colors from '../styles/Colors';
 import Blurb from '../components/Blurb';
-import {ScrollView} from 'react-native';
+import {View} from 'react-native';
 import FAQ from '../components/FAQ';
 
 export const EmptyScreen = ({route, id}) => {
@@ -50,7 +50,7 @@ export const EmptyScreen = ({route, id}) => {
     };
   });
   return (
-    <ScrollView style={{backgroundColor: Colors.gray}}>
+    <View style={{backgroundColor: Colors.gray}}>
       {blurb && (
         <Blurb
           title={blurb.title}
@@ -60,7 +60,7 @@ export const EmptyScreen = ({route, id}) => {
         />
       )}
       {showFAQ && <FAQ />}
-    </ScrollView>
+    </View>
   );
 };
 
