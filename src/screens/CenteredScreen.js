@@ -48,7 +48,7 @@ export const CenteredScreen = ({route, id}) => {
                 />
               );
             }
-            return <TheComponent {...node} />;
+            return <TheComponent {...node} key={index} />;
           })}
         </>
       )}
