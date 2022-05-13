@@ -49,9 +49,8 @@ export const textStyling = StyleSheet.create({
   publish: {
     fontSize: 13,
     fontWeight: '400',
-    position: 'absolute',
-    bottom: 10,
-    left: 20,
+    marginTop: 5,
+    marginLeft: 15,
     color: Colors.fontColor,
   },
   simpletext: {
